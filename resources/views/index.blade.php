@@ -93,31 +93,22 @@
     </div>
 
     <!--team member-->
-    <?php
-    // include 'includes/dbconnection.php';
-
-    // Fetch all employees
-    /* $sql = 'SELECT EmpName, ProfilePic,Designation FROM tblemployee';
-    $query = $dbh->prepare($sql);
-    $query->execute();
-    $members = $query->fetchAll(PDO::FETCH_OBJ); */
-    ?>
-
     <section class="our-members py-5">
         <div class="container">
-            <h2 class="section-title text-center mb-5">Meet Our Members</h2><br>
+            <h2 class="section-title text-center mb-5">Meet Our Member</h2><br>
             <div class="row justify-content-center">
-                <?php /* foreach ($members as $member) {  */?>
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="member-card text-center">
-                        <div class="profile-image-wrapper">
-                            <img src="admin/images/<?php /* echo !empty($member->ProfilePic) ? htmlentities($member->ProfilePic) : 'default.jpg'; */ ?>" alt="<?php /* echo htmlentities($member->EmpName); */ ?>" class="profile-image">
-                        </div><br>
-                        <h3 class="member-name mt-3"><?php /* echo htmlentities($member->EmpName); */ ?></h3>
-                        <h5 class="member-designation mt-3"><?php /* echo htmlentities($member->Designation); */ ?></h5>
+                @foreach ($Employers as $employer)
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="member-card text-center">
+                            <div class="profile-image-wrapper">
+                                <img src="{{ $employer->ProfilePic && file_exists('images/employee/') . $employer->ProfilePic ? asset('images/employee/') . $employer->ProfilePic : ($employer->Gender == 'Female'? asset('images/defaultFemaleUser.jpg') : asset('images/defaultMaleUser.jpg'))  }}"
+                                    alt="#{{ $employer->EmpName }}" class="profile-image">
+                            </div><br>
+                            <h3 class="member-name mt-3">{{ $employer->EmpName }}</h3>
+                            <h5 class="member-designation mt-3">{{ $employer->Designation }}</h5>
+                        </div>
                     </div>
-                </div>
-                <?php ?>
+                @endforeach
             </div>
         </div>
     </section>
