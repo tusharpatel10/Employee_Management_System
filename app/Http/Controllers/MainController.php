@@ -15,7 +15,7 @@ class MainController extends Controller
     }
     public function about()
     {
-        $tablePages = DB::table('table_pages')->where('id', 1)->get();
+        $tablePages = DB::table('table_pages')->first();
 
         return view('about', compact('tablePages'));
     }

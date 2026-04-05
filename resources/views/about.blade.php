@@ -29,7 +29,6 @@
                 <div class="col-md-6 banner_bottom_left">
                     <h4>Employment opportunities for <span>Professionals</span></h4>
                     {{ $tablePages->PageDescription }}
-
                     <div class="clearfix"> </div>
                 </div>
                 <div class="col-md-6 banner_bottom_right">
