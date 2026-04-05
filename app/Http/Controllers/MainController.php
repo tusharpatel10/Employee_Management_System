@@ -19,4 +19,10 @@ class MainController extends Controller
 
         return view('about', compact('tablePages'));
     }
+
+    public function contact()
+    {
+        $tablePages = DB::table('table_pages')->skip(1)->first();
+        return view('contact', compact('tablePages'));
+    }
 }
