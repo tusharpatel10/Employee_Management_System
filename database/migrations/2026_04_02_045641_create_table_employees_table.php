@@ -14,16 +14,16 @@ return new class extends Migration
         Schema::create('table_employees', function (Blueprint $table) {
             $table->id();
             $table->integer('DepartmentID')->nullable();
-            $table->integer('EmpId')->nullable();
+            $table->string('EmpId')->unique();
             $table->string('EmpName')->nullable();
             $table->string('EmpEmail')->nullable();
-            $table->enum('Gender', ['Male', 'Female', 'other'])->default('Male');
-            $table->bigInteger('EmpContactNumber')->nullable();
+            $table->enum('Gender', ['Male', 'Female', 'Other'])->default('Male');
+            $table->string('EmpContactNumber', 50)->nullable();
             $table->string('Designation')->nullable();
             $table->date('EmpDateOfBirth')->nullable();
             $table->string('EmpAddress')->nullable();
             $table->date('EmpDateofjoining')->nullable();
-            $table->tinyText('Description');
+            $table->text('Description')->nullable();
             $table->string('Password')->nullable();
             $table->string('ProfilePic')->nullable();
             $table->timestamps();

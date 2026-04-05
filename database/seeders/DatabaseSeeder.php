@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,9 +17,21 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+
+
+        /* 1. This is the first Method */
+        // $this->call(EmployeeSeeder::class);
+        $this->call(DepartmentSeeder::class);
+
+
+        /* 2. This is the second Method */
+
+
+        /* 3. Hint for the Cloud AI method */
+        // $this->call(EmployeeSeeder::class);
     }
 }
