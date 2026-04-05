@@ -13,4 +13,10 @@ class MainController extends Controller
         $Employers = DB::table('table_employees')->inRandomOrder()->limit('8')->get();
         return view('index', compact('tblPages', 'Employers'));
     }
+    public function about()
+    {
+        $tablePages = DB::table('table_pages')->where('id', 1)->get();
+
+        return view('about', compact('tablePages'));
+    }
 }

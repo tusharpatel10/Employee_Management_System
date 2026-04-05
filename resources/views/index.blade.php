@@ -72,14 +72,14 @@
                 <h3 class="tittle">About Us</h3>
             </div>
             <div class="inner_sec_grids_info_w3ls">
-                @foreach ($tblPages as $tblPage)
-                    @if ($loop->first)
-                        <div class="col-md-6 banner_bottom_left">
-                            <h4>Employment opportunities for <span>Professionals</span></h4>
+                <div class="col-md-6 banner_bottom_left">
+                    <h4>Employment opportunities for <span>Professionals</span></h4>
+                    @foreach ($tblPages as $tblPage)
+                        @if ($loop->first)
                             <p>{{ $tblPage->PageDescription }}</p>
-                            <div class="clearfix"> </div>
-                        </div>
-                    @endif
+                            {{-- <div class="clearfix"> </div> --}}
+                </div>
+                @endif
                 @endforeach
                 <div class="col-md-6 banner_bottom_right">
                     <div class="agileits_w3layouts_banner_bottom_grid">
@@ -101,7 +101,7 @@
                     <div class="col-md-3 col-sm-6 mb-4">
                         <div class="member-card text-center">
                             <div class="profile-image-wrapper">
-                                <img src="{{ $employer->ProfilePic && file_exists('images/employee/') . $employer->ProfilePic ? asset('images/employee/') . $employer->ProfilePic : ($employer->Gender == 'Female'? asset('images/defaultFemaleUser.jpg') : asset('images/defaultMaleUser.jpg'))  }}"
+                                <img src="{{ $employer->ProfilePic && file_exists('images/employee/') . $employer->ProfilePic ? asset('images/employee/') . $employer->ProfilePic : ($employer->Gender == 'Female' ? asset('images/defaultFemaleUser.jpg') : asset('images/defaultMaleUser.jpg')) }}"
                                     alt="#{{ $employer->EmpName }}" class="profile-image">
                             </div><br>
                             <h3 class="member-name mt-3">{{ $employer->EmpName }}</h3>

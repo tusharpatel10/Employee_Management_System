@@ -22,7 +22,8 @@
                             <li class="{{ request()->routeIs('home') ? 'active' : '' }}"><a href="{{ route('home') }}"
                                     class="effect-3">Home</a>
                             </li>
-                            <li class=""><a href="#" class="effect-3">About</a>
+                            <li class="{{ request()->routeIs('about') ? 'active' : '' }}">
+                                <a href="{{ route('about') }}" class="effect-3">About</a>
                             </li>
                             <li class=">"><a href="#" class="effect-3">Contact</a>
                             </li>
