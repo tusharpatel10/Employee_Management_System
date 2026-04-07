@@ -15,4 +15,5 @@ Route::controller(MainController::class)->group(function () {
 // faqController
 Route::controller(FaqController::class)->prefix('faq')->name('faq/')->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::post('/faqStore', 'faqStore')->name('faqStore');
 });

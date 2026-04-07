@@ -9,6 +9,27 @@
             </div>
         </div>
 
+
+        {{-- Alerts --}}
+        @if (session('Success'))
+            <div class="alert alert-success alert-dismissible fade show">
+                {{ session('Success') }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                </button>
+            </div>
+        @endif
+
+        {{-- ✅ Error Message (replaces echo "Error:") --}}
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show">
+                {{ session('error') }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                </button>
+            </div>
+        @endif
+
         @foreach ($faqs as $faq)
             <div class="wrapper">
                 <button class="toggle">
@@ -29,7 +50,6 @@
     </div>
 
     <!-- Modals -->
-
     <div class="modal fade" id="addFaqModal" tabindex="-1" aria-labelledby="addFaq" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -40,14 +60,37 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="./endpoint/add-faq.php" method="POST">
+                    {{-- ✅ Validation Errors (replaces alert('Please fill in all fields!')) --}}
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form action="{{ route('faq/faqStore') }}" method="POST">
+                        @csrf
                         <div class="form-group">
                             <label for="question">Frequently Asked Question:</label>
                             <input type="text" class="form-control" id="question" name="question">
+                            {{-- ✅ Individual field error --}}
+                            @error('question')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="answer">Answer:</label>
                             <textarea class="form-control" name="answer" id="answer" cols="30" rows="7"></textarea>
+                            {{-- ✅ Individual field error --}}
+                            @error('answer')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -88,4 +131,13 @@
             </div>
         </div>
     </div>
+
+    {{-- ✅ Auto open modal if validation fails --}}
+    @if ($errors->any())
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                $('#addFaqModal').modal('show');
+            });
+        </script>
+    @endif
 @endsection
