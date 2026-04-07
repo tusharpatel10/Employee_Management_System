@@ -10,25 +10,28 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ route('home') }}">
-                        <h1><span class="fa fa-signal" aria-hidden="true"></span> TalentHUB <label>Manage. Grow.
-                                Succeed.</label></h1>
+                    <a class="navbar-brand" href="index.php">
+                        <h1><span class="fa fa-signal" aria-hidden="true"></span> Employee HUB <label>Management
+                                System</label></h1>
                     </a>
                 </div>
                 <!--/.navbar-header-->
+                <?php $uri = $_SERVER['REQUEST_URI']; ?>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <nav class="link-effect-2" id="link-effect-2">
                         <ul class="nav navbar-nav">
-                            <li class="{{ request()->routeIs('home') ? 'active' : '' }}"><a href="{{ route('home') }}"
-                                    class="effect-3">Home</a>
-                            </li>
-                            <li class="{{ request()->routeIs('about') ? 'active' : '' }}">
-                                <a href="{{ route('about') }}" class="effect-3">About</a>
-                            </li>
-                            <li class="{{ request()->routeIs('contact') ? 'active' : '' }}"><a
-                                    href="{{ route('contact') }}" class="effect-3">Contact</a>
-                            </li>
-                            <li class=""><a href="{{ route('faq/index') }}" class="effect-3">FAQ</a>
+                            <li class=" <?php if ($uri == '/etms/index.php') {
+                                echo 'active';
+                            } ?>"><a href="index.php" class="effect-3">Home</a></li>
+                            <li class=" <?php if ($uri == '/etms/about.php') {
+                                echo 'active';
+                            } ?>"><a href="about.php" class="effect-3">About</a></li>
+                            <li class=" <?php if ($uri == 'contact.php') {
+                                echo 'active';
+                            } ?>"><a href="contact.php" class="effect-3">Contact</a></li>
+                            <li class=" <?php if ($uri == '../faq-management-system/') {
+                                echo 'active';
+                            } ?>"><a href="faq-management-system/" class="effect-3">FAQ</a>
                             </li>
 
                             <li><a href="admin/login.php" class="effect-3">Admin</a></li>
@@ -45,6 +48,3 @@
 
 <!-- header section ends -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
