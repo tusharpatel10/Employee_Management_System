@@ -141,7 +141,7 @@
             });
         }
 
-        function updateFaq(id) {
+        /* function updateFaq(id) {
             $("#updateFaqModal").modal("show");
 
             let updateQuestion = $("#question-" + id).html();
@@ -150,7 +150,7 @@
             $("#updateFaqID").val(id);
             $("#updateQuestion").val(updateQuestion);
             $("#updateAnswer").val(updateAnswer);
-        }
+        } */
 
         function deleteFaq(id) {
             if (confirm("Do you want to delete this faq?")) {
@@ -158,6 +158,8 @@
             }
         }
     </script>
+
+    @yield('script')
 </body>
 
 </html>

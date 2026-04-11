@@ -6,6 +6,8 @@ use App\Models\Faq;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use function Symfony\Component\Clock\now;
+
 class FaqController extends Controller
 {
     public function index()
@@ -39,6 +41,21 @@ class FaqController extends Controller
             return redirect()->route('faq/index')->with('Success', 'FAQ Added Successfully!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'something went wrong: ' . $e->getMessage())->withInput();
+        }
+    }
+
+
+    public function faqUpdate(Request $request, $id)
+    {
+        try {
+            DB::table('table_faqs')->where('id', $id)->update([
+                'question' => $request->question,
+                'answer' => $request->answer,
+                'updated_at' => now()
+            ]);
+            return redirect()->route('faq/index')->with('Success', 'FAQ Updated Successfully!');
+        } catch (\Exception $e) {
+            return redirect()->route('faq/index')->with('error', 'something went wrong: ' . $e->getMessage())->withInput();
         }
     }
 }

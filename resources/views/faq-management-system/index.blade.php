@@ -40,7 +40,7 @@
                     <p id="answer-{{ $faq->id }}">{{ $faq->answer }}</p>
                 </div>
                 <div class="action-button float-right" style="display: none;">
-                    <button class="btn btn-primary btn-sm" onclick="updateFaq({{ $faq->id }})"><img
+                    <button class="btn btn-primary editBtn btn-sm" onclick="updateFaq({{ $faq->id }})"><img
                             src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt=""></button>
                     <button class="btn btn-danger btn-sm" onclick="deleteFaq({{ $faq->id }})"><img
                             src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png" alt=""></button>
@@ -49,7 +49,7 @@
         @endforeach
     </div>
 
-    <!-- Modals -->
+    <!-- Add Modals -->
     <div class="modal fade" id="addFaqModal" tabindex="-1" aria-labelledby="addFaq" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -102,6 +102,8 @@
         </div>
     </div>
 
+    {{-- Modal Start --}}
+    {{-- ✅ Update FAQ Modal --}}
     <div class="modal fade" id="updateFaqModal" tabindex="-1" aria-labelledby="updateFaq" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -112,25 +114,45 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="./endpoint/update-faq.php" method="POST">
-                        <input type="text" class="form-control" id="updateFaqID" name="tbl_faq_id">
+
+
+                    {{-- New: route('admin.faq.update', id) set by JavaScript --}}
+                    <form id="updateFaqForm" action="" method="POST">
+                        @csrf
+                        @method('PUT')
+
+                        {{-- New: ID is in the route URL, not needed as input --}}
+                        <input type="hidden" id="updateFaqID" name="id">
+
                         <div class="form-group">
-                            <label for="updateQuestion">Frequently Asked Question:</label>
-                            <input type="text" class="form-control" id="updateQuestion" name="question">
+                            <label for="updateQuestion">
+                                Frequently Asked Question:
+                            </label>
+                            <input type="text" class="form-control" id="updateQuestion" name="question"
+                                placeholder="Enter question">
                         </div>
+
                         <div class="form-group">
                             <label for="updateAnswer">Answer:</label>
-                            <textarea class="form-control" name="answer" id="updateAnswer" cols="30" rows="7"></textarea>
+                            <textarea class="form-control" name="answer" id="updateAnswer" cols="30" rows="7"
+                                placeholder="Enter answer"></textarea>
                         </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
     </div>
+
+
+    {{-- Modal End --}}
+
+
 
     {{-- ✅ Auto open modal if validation fails --}}
     @if ($errors->any())
@@ -140,4 +162,27 @@
             });
         </script>
     @endif
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {});
+
+        function updateFaq(id) {
+            // Show modal - same as before
+            $("#updateFaqModal").modal("show");
+
+            // get existing text from DOM - same as before
+            let updateQuestion = $("#question-" + id).html();
+            let updateAnswer = $("#answer-" + id).html();
+
+            // fill form fields
+            $("#updateFaqID").val(id);
+            $("#updateQuestion").val(updateQuestion);
+            $("#updateAnswer").val($.trim(updateAnswer));
+
+            // set from action to laravel route
+            $("#updateFaqForm").attr("action", "/faq/faqUpdate/" + id);
+        }
+    </script>
 @endsection
