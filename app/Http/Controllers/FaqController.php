@@ -58,4 +58,19 @@ class FaqController extends Controller
             return redirect()->route('faq/index')->with('error', 'something went wrong: ' . $e->getMessage())->withInput();
         }
     }
+
+    public function faqDelete($id)
+    {
+        try {
+            $faq = Faq::findOrFail($id);
+
+            if (!$faq) {
+                return redirect()->route('faq/index')->with('error', 'FAQ not found!');
+            }
+            $faq->delete();
+            return redirect()->route('faq/index')->with('Success', 'FAQ Deleted Successfully!');
+        } catch (\Exception $e) {
+            return redirect()->route('faq/index')->with('error', 'something went wrong: ' . $e->getMessage())->withInput();
+        }
+    }
 }

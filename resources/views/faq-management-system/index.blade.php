@@ -184,5 +184,13 @@
             // set from action to laravel route
             $("#updateFaqForm").attr("action", "/faq/faqUpdate/" + id);
         }
+
+
+        // Delete Method
+        function deleteFaq(id) {
+            if (confirm("Do you want to delete this faq?")) {
+                window.location = "/faq/faq/" + id + "/delete";
+            }
+        }
     </script>
 @endsection

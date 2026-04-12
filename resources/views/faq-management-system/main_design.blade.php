@@ -140,23 +140,6 @@
                 }
             });
         }
-
-        /* function updateFaq(id) {
-            $("#updateFaqModal").modal("show");
-
-            let updateQuestion = $("#question-" + id).html();
-            let updateAnswer = $("#answer-" + id).html();
-
-            $("#updateFaqID").val(id);
-            $("#updateQuestion").val(updateQuestion);
-            $("#updateAnswer").val(updateAnswer);
-        } */
-
-        function deleteFaq(id) {
-            if (confirm("Do you want to delete this faq?")) {
-                window.location = "./endpoint/delete-faq.php?faq=" + id;
-            }
-        }
     </script>
 
     @yield('script')

@@ -9,7 +9,7 @@ class Faq extends Model
 {
     use HasFactory;
 
-    protected $table = 'table_faq';
+    protected $table = 'table_faqs';
 
     protected $primaryKey = 'id';
 

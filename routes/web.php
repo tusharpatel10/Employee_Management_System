@@ -17,4 +17,5 @@ Route::controller(FaqController::class)->prefix('faq')->name('faq/')->group(func
     Route::get('/', 'index')->name('index');
     Route::post('/faqStore', 'faqStore')->name('faqStore');
     Route::put('/faqUpdate/{id}', 'faqUpdate')->name('faqUpdate');
+    Route::get('/faq/{id}/delete', 'faqDelete')->name('delete');
 });
