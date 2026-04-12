@@ -1,0 +1,16 @@
+1. add the file
+    (git add -A)
+
+2. if not edit the commit and upload file run this command
+    (git commit --amend --no-edit)
+
+    if edit the commit and upload the file run this command
+    (git commit  --amend -m "new commit")
+
+3. GitHub पर Force Push करें (Force Push to GitHub)
+    because आपने इतिहास (history) बदल दिया है, इसलिए GitHub एक normal push को reject कर देगा। आपको बदलावों को force-push करना होगा:
+    (git push origin <branch-name> --force-with-lease)
+
+    Important Warning ⚠️
+    Team Work: अगर आप किसी ऐसी टीम प्रोजेक्ट पर काम कर रहे हैं जहाँ दूसरे लोग भी उसी ब्रांच का इस्तेमाल कर रहे हैं, तो Force Push न करें। इससे दूसरों के local repositories में समस्या आ सकती है। ऐसे में बेहतर है कि आप एक नया commit (normal push) करें।
+    Safety: हमेशा --force की जगह --force-with-lease का उपयोग करें। यह सुरक्षित है क्योंकि यह चेक करता है कि किसी और ने आपके push करने से पहले कोई बदलाव तो नहीं किए।
