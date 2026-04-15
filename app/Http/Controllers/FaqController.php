@@ -38,7 +38,7 @@ class FaqController extends Controller
                 'question' => $request->question,
                 'answer' => $request->answer
             ]);
-            return redirect()->route('faq/index')->with('Success', 'FAQ Added Successfully!');
+            return redirect()->route('faq.index')->with('Success', 'FAQ Added Successfully!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'something went wrong: ' . $e->getMessage())->withInput();
         }
@@ -53,9 +53,9 @@ class FaqController extends Controller
                 'answer' => $request->answer,
                 'updated_at' => now()
             ]);
-            return redirect()->route('faq/index')->with('Success', 'FAQ Updated Successfully!');
+            return redirect()->route('faq.index')->with('Success', 'FAQ Updated Successfully!');
         } catch (\Exception $e) {
-            return redirect()->route('faq/index')->with('error', 'something went wrong: ' . $e->getMessage())->withInput();
+            return redirect()->route('faq.index')->with('error', 'something went wrong: ' . $e->getMessage())->withInput();
         }
     }
 
@@ -65,12 +65,12 @@ class FaqController extends Controller
             $faq = Faq::findOrFail($id);
 
             if (!$faq) {
-                return redirect()->route('faq/index')->with('error', 'FAQ not found!');
+                return redirect()->route('faq.index')->with('error', 'FAQ not found!');
             }
             $faq->delete();
-            return redirect()->route('faq/index')->with('Success', 'FAQ Deleted Successfully!');
+            return redirect()->route('faq.index')->with('Success', 'FAQ Deleted Successfully!');
         } catch (\Exception $e) {
-            return redirect()->route('faq/index')->with('error', 'something went wrong: ' . $e->getMessage())->withInput();
+            return redirect()->route('faq.index')->with('error', 'something went wrong: ' . $e->getMessage())->withInput();
         }
     }
 }

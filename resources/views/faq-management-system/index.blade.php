@@ -70,7 +70,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{ route('faq/faqStore') }}" method="POST">
+                    <form action="{{ route('faq.faqStore') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="question">Frequently Asked Question:</label>

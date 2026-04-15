@@ -14,7 +14,7 @@ Route::controller(MainController::class)->group(function () {
 
 
 // faqController
-Route::controller(FaqController::class)->prefix('faq')->name('faq/')->group(function () {
+Route::controller(FaqController::class)->prefix('faq')->name('faq.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::post('/faqStore', 'faqStore')->name('faqStore');
     Route::put('/faqUpdate/{id}', 'faqUpdate')->name('faqUpdate');
@@ -23,6 +23,6 @@ Route::controller(FaqController::class)->prefix('faq')->name('faq/')->group(func
 
 
 // Admin Route
-Route::controller(AdminController::class)->prefix('admin')->name('admin/')->group(function () {
+Route::controller(AdminController::class)->prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', 'login')->name('login');
 });
