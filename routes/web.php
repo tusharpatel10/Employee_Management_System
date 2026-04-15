@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
@@ -18,4 +19,10 @@ Route::controller(FaqController::class)->prefix('faq')->name('faq/')->group(func
     Route::post('/faqStore', 'faqStore')->name('faqStore');
     Route::put('/faqUpdate/{id}', 'faqUpdate')->name('faqUpdate');
     Route::get('/faq/{id}/delete', 'faqDelete')->name('delete');
+});
+
+
+// Admin Route
+Route::controller(AdminController::class)->prefix('admin')->name('admin/')->group(function () {
+    Route::get('/login', 'login')->name('login');
 });

@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
 
         /* 1. This is the first Method */
         // $this->call(EmployeeSeeder::class);
-        $this->call(DepartmentSeeder::class);
+        // $this->call(DepartmentSeeder::class);
 
 
         /* 2. This is the second Method */
@@ -33,5 +33,9 @@ class DatabaseSeeder extends Seeder
 
         /* 3. Hint for the Cloud AI method */
         // $this->call(EmployeeSeeder::class);
+
+
+        /* 4. FAQ Seeder */
+        $this->call(FaqSeeder::class);
     }
 }

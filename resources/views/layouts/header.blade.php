@@ -31,7 +31,7 @@
                             <li class=""><a href="{{ route('faq/index') }}" class="effect-3">FAQ</a>
                             </li>
 
-                            <li><a href="admin/login.php" class="effect-3">Admin</a></li>
+                            <li><a href="{{ route('admin/login') }}" class="effect-3">Admin</a></li>
                             <li><a href="employee/login.php" class="effect-3">Employee</a></li>
                         </ul>
                     </nav>
