@@ -28,10 +28,10 @@
                             <li class="{{ request()->routeIs('contact') ? 'active' : '' }}"><a
                                     href="{{ route('contact') }}" class="effect-3">Contact</a>
                             </li>
-                            <li class=""><a href="{{ route('faq/index') }}" class="effect-3">FAQ</a>
+                            <li class=""><a href="{{ route('faq.index') }}" class="effect-3">FAQ</a>
                             </li>
 
-                            <li><a href="{{ route('admin/login') }}" class="effect-3">Admin</a></li>
+                            <li><a href="{{ route('admin.login') }}" class="effect-3">Admin</a></li>
                             <li><a href="employee/login.php" class="effect-3">Employee</a></li>
                         </ul>
                     </nav>

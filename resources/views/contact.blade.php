@@ -19,22 +19,22 @@
                 <div>
                     <span><i class = "fas fa-mobile-alt"></i></span>
                     <span>Phone No.</span>
-                    <span class = "text">1-2392-23928-2</span>
+                    <span class = "text">{{ $tablePages->MobileNumber }}</span>
                 </div>
                 <div>
                     <span><i class = "fas fa-envelope-open"></i></span>
                     <span>E-mail</span>
-                    <span class = "text">mail@company.com</span>
+                    <span class = "text">{{ $tablePages->Email }}</span>
                 </div>
                 <div>
                     <span><i class = "fas fa-map-marker-alt"></i></span>
                     <span>Address</span>
-                    <span class = "text">423 silver business hub trede motavaracha utran surat gujrat </span>
+                    <span class = "text">{{ $tablePages->PageDescription }}</span>
                 </div>
                 <div>
                     <span><i class = "fas fa-clock"></i></span>
                     <span>Opening Hours</span>
-                    <span class = "text">Monday - Friday (10:00 AM to 7:00 PM)</span>
+                    <span class = "text">{{ $tablePages->Timing }}</span>
                 </div>
             </div>
 
